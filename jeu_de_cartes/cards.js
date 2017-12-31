@@ -56,58 +56,69 @@ function river(mc){
 /*---------------------------------------------------------------------*/
 function checkHand(e){
   let sevenCards = [flop1, flop2, flop3, turn, river, e.card1, e.card2];
-  let cardsValue = [];
-  let cardsColor = [];
+  let cardsValues = [], cardsColors = [];
   let countA = 0, countB = 0, countC = 0, countD = 0;
   let count1 = 0, count2 = 0, count3 = 0, count4 = 0, count5 = 0,
       count6 = 0, count7 = 0, count8 = 0, count9 = 0, count10 = 0,
       count11 = 0, count12 = 0, count13 = 0;
-  sevenCards.forEach(function(elem){
-    let y = elem.substr(0,2);
-    cardsValue.push(y);
-    let x = elem.substr(2,1);
-    cardsColor.push(x);
+  let sortedValues, sortedValuesInt = [];
+  sevenCards.forEach(function(e){
+    let x = e.substr(2,1);
+    cardsColors.push(x);
+    let y = e.substr(0,2);
+    cardsValues.push(y);
   });
-  cardsColor.forEach(function(elem){
-    if(elem == 'a')
+  cardsColors.forEach(function(e){
+    if(e == 'a')
         countA++;
-    if(elem == 'b')
+    if(e == 'b')
         countB++;
-    if(elem == 'c')
+    if(e == 'c')
         countC++;
-    if(elem == 'd')
+    if(e == 'd')
         countD++;
   });
-  cardsValue.forEach(function(elem){
-    if(elem == '01')
+  cardsValues.forEach(function(e){
+    if(e == '01')
         count1++;
-    if(elem == '02')
+    if(e == '02')
         count2++;
-    if(elem == '03')
+    if(e == '03')
         count3++;
-    if(elem == '04')
+    if(e == '04')
         count4++;
-    if(elem == '05')
+    if(e == '05')
         count5++;
-    if(elem == '06')
+    if(e == '06')
         count6++;
-    if(elem == '07')
+    if(e == '07')
         count7++;
-    if(elem == '08')
+    if(e == '08')
         count8++;
-    if(elem == '09')
+    if(e == '09')
         count9++;
-    if(elem == '10')
+    if(e == '10')
         count10++;
-    if(elem == '11')
+    if(e == '11')
         count11++;
-    if(elem == '12')
+    if(e == '12')
         count12++;
-    if(elem == '13')
+    if(e == '13')
         count13++;
   });
+  sortedValues = cardsValues.sort();
+  sortedValues.forEach(function(e){
+    sortedValuesInt.push(Number(e));
+  });
+  let s = sortedValuesInt;
+
+  // console.log(sevenCards);
+  // console.log(cardsValues);
+  // console.log(cardsColors);
+  // console.log(sortedValuesInt);
 
   /*Quinte flush royale*/
+
   // if ( (countA == 5 || countB == 5 || countC == 5 || countD == 5) && () ) {
   // }
   // else {
