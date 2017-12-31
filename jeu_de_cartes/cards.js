@@ -112,11 +112,6 @@ function checkHand(e){
   });
   let s = sortedValuesInt;
 
-  // console.log(sevenCards);
-  // console.log(cardsValues);
-  // console.log(cardsColors);
-  // console.log(sortedValuesInt);
-
   /*Quinte flush royale*/
 
   // if ( (countA == 5 || countB == 5 || countC == 5 || countD == 5) && () ) {
@@ -142,4 +137,51 @@ function checkHand(e){
   /*Double pair*/
   /*pair*/
   /*Hauteur*/
+}
+/*---------------------------------------------------------------------*/
+function checkHauteur(tab){
+
+}
+function checkPair(tab){
+
+}
+function checkBrelan(tab){
+
+}
+function checkQuinte(tab){
+  let i = tab.length-1;
+  while(i >= 0){
+    if( (tab[i]==tab[i-1]+1) && (tab[i-1]==tab[i-2]+1) && (tab[i-2]==tab[i-3]+1) && (tab[i-3]==tab[i-4]+1) ) {
+      console.log('quinte');
+      break;
+    }
+    else{
+      console.log('no quinte');
+    }
+    i--;
+  }
+}
+function checkCouleur(tab){
+  if (countA == 5 || countB == 5 || countC == 5 || countD == 5) {
+    console.log('couleur');
+  }
+  else {
+    console.log('no color');
+  }
+}
+function checkCarre(tab){
+
+}
+/*---------------------------------------------------------------------*/
+function checkDoublePair(tab){
+
+}
+function checkFull(tab){
+
+}
+function checkQuinteFlush(tab){
+
+}
+function checkQuinteFlushRoyale(tab){
+  
 }
