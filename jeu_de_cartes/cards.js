@@ -2,20 +2,26 @@ var player1 = {};
 var player2 = {};
 var players = [player1, player2];
 var flop1, flop2, flop3, turn, river;
+
 /*---------------------------------------------------------------------*/
 
 function play(){
   var mc = mixCards();
   giveCards(mc);
   flop(mc);
+  turn(mc);
   river(mc);
+  players.forEach(function(e){
+    checkHand(e);
+  });
+
 }
 
 /*---------------------------------------------------------------------*/
 function mixCards(){
-  let cards = ["1a","1b","1c","1d","2a","2b","2c","2d","3a","3b","3c",
-    "3d","4a","4b","4c","4d","5a","5b","5c","5d","6a","6b","6c","6d",
-    "7a","7b","7c","7d","8a","8b","8c","8d","9a","9b","9c","9d","10a",
+  let cards = ["01a","01b","01c","01d","02a","02b","02c","02d","03a","03b","03c",
+    "03d","04a","04b","04c","04d","05a","05b","05c","05d","06a","06b","06c","06d",
+    "07a","07b","07c","07d","08a","08b","08c","08d","09a","09b","09c","09d","10a",
     "10b","10c","10d","11a","11b","11c","11d","12a","12b","12c","12d",
     "13a","13b","13c","13d"
   ];
@@ -29,7 +35,6 @@ function mixCards(){
   }
   return mixed;
 }
-
 function giveCards(mc){
   player1.card1 = mc[0];
   player1.card2 = mc[1];
@@ -46,4 +51,27 @@ function turn(mc){
 }
 function river(mc){
   river = mc[11];
+}
+
+/*---------------------------------------------------------------------*/
+function checkHand(e){
+  let cf1 = flop1[2],
+      cf2 = flop2[2],
+      cf3 = flop3[2],
+      ct = turn[2],
+      cr = river[2],
+      cc1 = e.card1[2],
+      cc2 = e.card2[2];
+  console.log(cf1 + cf2 + cf3 + ct + cr + cc1 + cc2);
+
+  /*Quinte flush royale*/
+  /*Quinte flush*/
+  /*Carré*/
+  /*Full*/
+  /*Couleur*/
+  /*Quinte*/
+  /*Brelan*/
+  /*Double pair*/
+  /*pair*/
+  /*Hauteur*/
 }
