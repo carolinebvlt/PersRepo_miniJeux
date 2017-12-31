@@ -55,49 +55,77 @@ function river(mc){
 
 /*---------------------------------------------------------------------*/
 function checkHand(e){
-  var cf1 = flop1[2],
-      cf2 = flop2[2],
-      cf3 = flop3[2],
-      ct = turn[2],
-      cr = river[2],
-      cc1 = e.card1[2],
-      cc2 = e.card2[2];
-  var z = (cf1 + cf2 + cf3 + ct + cr + cc1 + cc2);
+  let sevenCards = [flop1, flop2, flop3, turn, river, e.card1, e.card2];
+  let cardsValue = [];
+  let cardsColor = [];
   let countA = 0, countB = 0, countC = 0, countD = 0;
-  for(var i = 0; i < z.length; ++i){
-      if(z[i] == 'a')
-          countA++;
-      if(z[i] == 'b')
-          countB++;
-      if(z[i] == 'c')
-          countC++;
-      if(z[i] == 'd')
-          countD++;
-  }
-  console.log(countA);
-  console.log(countB);
-  console.log(countC);
-  console.log(countD);
+  let count1 = 0, count2 = 0, count3 = 0, count4 = 0, count5 = 0,
+      count6 = 0, count7 = 0, count8 = 0, count9 = 0, count10 = 0,
+      count11 = 0, count12 = 0, count13 = 0;
+  sevenCards.forEach(function(elem){
+    let y = elem.substr(0,2);
+    cardsValue.push(y);
+    let x = elem.substr(2,1);
+    cardsColor.push(x);
+  });
+  cardsColor.forEach(function(elem){
+    if(elem == 'a')
+        countA++;
+    if(elem == 'b')
+        countB++;
+    if(elem == 'c')
+        countC++;
+    if(elem == 'd')
+        countD++;
+  });
+  cardsValue.forEach(function(elem){
+    if(elem == '01')
+        count1++;
+    if(elem == '02')
+        count2++;
+    if(elem == '03')
+        count3++;
+    if(elem == '04')
+        count4++;
+    if(elem == '05')
+        count5++;
+    if(elem == '06')
+        count6++;
+    if(elem == '07')
+        count7++;
+    if(elem == '08')
+        count8++;
+    if(elem == '09')
+        count9++;
+    if(elem == '10')
+        count10++;
+    if(elem == '11')
+        count11++;
+    if(elem == '12')
+        count12++;
+    if(elem == '13')
+        count13++;
+  });
 
   /*Quinte flush royale*/
-  if ( (countA == 5 || countB == 5 || countC == 5 || countD == 5) && () ) {
-  }
-  else {
-  }
-  /*Quinte flush*/
-  if ( (countA == 5 || countB == 5 || countC == 5 || countD == 5) && () ) {
-  }
-  else {
-  }
-  /*Carré*/
-  /*Full*/
-  /*Couleur*/
-  if ((countA == 5 || countB == 5 || countC == 5 || countD == 5)) {
-    console.log('couleur');
-  }
-  else {
-    console.log('no color');
-  }
+  // if ( (countA == 5 || countB == 5 || countC == 5 || countD == 5) && () ) {
+  // }
+  // else {
+  // }
+  // /*Quinte flush*/
+  // if ( (countA == 5 || countB == 5 || countC == 5 || countD == 5) && () ) {
+  // }
+  // else {
+  // }
+  // /*Carré*/
+  // /*Full*/
+  // /*Couleur*/
+  // if ((countA == 5 || countB == 5 || countC == 5 || countD == 5)) {
+  //   console.log('couleur');
+  // }
+  // else {
+  //   console.log('no color');
+  // }
   /*Quinte*/
   /*Brelan*/
   /*Double pair*/
