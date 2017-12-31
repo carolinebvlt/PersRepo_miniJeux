@@ -55,20 +55,49 @@ function river(mc){
 
 /*---------------------------------------------------------------------*/
 function checkHand(e){
-  let cf1 = flop1[2],
+  var cf1 = flop1[2],
       cf2 = flop2[2],
       cf3 = flop3[2],
       ct = turn[2],
       cr = river[2],
       cc1 = e.card1[2],
       cc2 = e.card2[2];
-  console.log(cf1 + cf2 + cf3 + ct + cr + cc1 + cc2);
+  var z = (cf1 + cf2 + cf3 + ct + cr + cc1 + cc2);
+  let countA = 0, countB = 0, countC = 0, countD = 0;
+  for(var i = 0; i < z.length; ++i){
+      if(z[i] == 'a')
+          countA++;
+      if(z[i] == 'b')
+          countB++;
+      if(z[i] == 'c')
+          countC++;
+      if(z[i] == 'd')
+          countD++;
+  }
+  console.log(countA);
+  console.log(countB);
+  console.log(countC);
+  console.log(countD);
 
   /*Quinte flush royale*/
+  if ( (countA == 5 || countB == 5 || countC == 5 || countD == 5) && () ) {
+  }
+  else {
+  }
   /*Quinte flush*/
+  if ( (countA == 5 || countB == 5 || countC == 5 || countD == 5) && () ) {
+  }
+  else {
+  }
   /*Carré*/
   /*Full*/
   /*Couleur*/
+  if ((countA == 5 || countB == 5 || countC == 5 || countD == 5)) {
+    console.log('couleur');
+  }
+  else {
+    console.log('no color');
+  }
   /*Quinte*/
   /*Brelan*/
   /*Double pair*/
