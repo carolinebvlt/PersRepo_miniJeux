@@ -17,7 +17,7 @@ function play(){
 
 }
 
-/*---------------------------------------------------------------------*/
+/*--------------------------------DEALER-------------------------------------*/
 function mixCards(){
   let cards = ["01a","01b","01c","01d","02a","02b","02c","02d","03a","03b","03c",
     "03d","04a","04b","04c","04d","05a","05b","05c","05d","06a","06b","06c","06d",
@@ -53,15 +53,18 @@ function river(mc){
   river = mc[11];
 }
 
-/*---------------------------------------------------------------------*/
+/*--------------------------CHECKHAND-------------------------------------------*/
 function checkHand(e){
-  let sevenCards = [flop1, flop2, flop3, turn, river, e.card1, e.card2];
-  let cardsValues = [], cardsColors = [];
-  let countA = 0, countB = 0, countC = 0, countD = 0;
-  let count1 = 0, count2 = 0, count3 = 0, count4 = 0, count5 = 0,
+  var sevenCards = [flop1, flop2, flop3, turn, river, e.card1, e.card2];
+  var cardsValues = [], cardsColors = [];
+  var countA = 0, countB = 0, countC = 0, countD = 0;
+
+  var countsValues =[];
+  var count1 = 0, count2 = 0, count3 = 0, count4 = 0, count5 = 0,
       count6 = 0, count7 = 0, count8 = 0, count9 = 0, count10 = 0,
       count11 = 0, count12 = 0, count13 = 0;
-  let sortedValues, sortedValuesInt = [];
+  var sortedValues, sortedValuesInt = [];
+
   sevenCards.forEach(function(e){
     let x = e.substr(2,1);
     cardsColors.push(x);
@@ -106,52 +109,53 @@ function checkHand(e){
     if(e == '13')
         count13++;
   });
+  countsValues.push(count1);
+  countsValues.push(count2);
+  countsValues.push(count3);
+  countsValues.push(count4);
+  countsValues.push(count5);
+  countsValues.push(count6);
+  countsValues.push(count7);
+  countsValues.push(count8);
+  countsValues.push(count9);
+  countsValues.push(count10);
+  countsValues.push(count11);
+  countsValues.push(count12);
+  countsValues.push(count1);
   sortedValues = cardsValues.sort();
   sortedValues.forEach(function(e){
     sortedValuesInt.push(Number(e));
   });
-  let s = sortedValuesInt;
-
-  /*Quinte flush royale*/
-
-  // if ( (countA == 5 || countB == 5 || countC == 5 || countD == 5) && () ) {
-  // }
-  // else {
-  // }
-  // /*Quinte flush*/
-  // if ( (countA == 5 || countB == 5 || countC == 5 || countD == 5) && () ) {
-  // }
-  // else {
-  // }
-  // /*Carré*/
-  // /*Full*/
-  // /*Couleur*/
-  // if ((countA == 5 || countB == 5 || countC == 5 || countD == 5)) {
-  //   console.log('couleur');
-  // }
-  // else {
-  //   console.log('no color');
-  // }
-  /*Quinte*/
-  /*Brelan*/
-  /*Double pair*/
-  /*pair*/
-  /*Hauteur*/
+  checkPair(countsValues);
 }
-/*---------------------------------------------------------------------*/
+/*-----------------------------CHECK----------------------------------------*/
 function checkHauteur(tab){
 
 }
 function checkPair(tab){
-
+  var pair = false;
+  for (var i = tab.length-1; i >= 0; i--) {
+    if(tab[i]>=2){
+      pair = true;
+      break;
+    }
+  }
+  return pair;
 }
 function checkBrelan(tab){
-
+  var brelan = false;
+  for (var i = tab.length-1; i >= 0; i--) {
+    if(tab[i]>=3){
+      brelan = true;
+      break;
+    }
+  }
+  return brelan;
 }
 function checkQuinte(tab){
   let i = tab.length-1;
   while(i >= 0){
-    if( (tab[i]==tab[i-1]+1) && (tab[i-1]==tab[i-2]+1) && (tab[i-2]==tab[i-3]+1) && (tab[i-3]==tab[i-4]+1) ) {
+    if((tab[i]==tab[i-1]+1)&&(tab[i-1]==tab[i-2]+1)&&(tab[i-2]==tab[i-3]+1)&&(tab[i-3]==tab[i-4]+1)) {
       console.log('quinte');
       break;
     }
@@ -183,5 +187,5 @@ function checkQuinteFlush(tab){
 
 }
 function checkQuinteFlushRoyale(tab){
-  
+
 }
