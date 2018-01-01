@@ -14,7 +14,6 @@ function play(){
   players.forEach(function(e){
     checkHand(e);
   });
-
 }
 
 /*--------------------------------DEALER-------------------------------------*/
@@ -64,6 +63,17 @@ function checkHand(e){
       count6 = 0, count7 = 0, count8 = 0, count9 = 0, count10 = 0,
       count11 = 0, count12 = 0, count13 = 0;
   var sortedValues, sortedValuesInt = [];
+
+  var quinteFlushRoyale,
+      quinteFlush,
+      carre,
+      full,
+      couleur,
+      quinte,
+      brelan,
+      doublePair,
+      pair,
+      hauteur;
 
   sevenCards.forEach(function(e){
     let x = e.substr(2,1);
@@ -126,16 +136,72 @@ function checkHand(e){
   sortedValues.forEach(function(e){
     sortedValuesInt.push(Number(e));
   });
-  checkPair(countsValues);
+  quinteFlushRoyale = checkQuinteFlushRoyale();
+  quinteFlush = checkQuinteFlush();
+  carre = checkCarre();
+  full = checkFull();
+  couleur = checkCouleur();
+  quinte = checkQuinte();
+  brelan = checkBrelan();
+  doublePair = checkDoublePair();
+  pair = checkPair(countsValues);
+  hauteur = checkHauteur();
+
+  if(quinteFlushRoyale){
+    console.log('QFR');
+  }
+  else{
+    if(quinteFlush){
+      console.log('QF');
+    }
+    else{
+      if(carre){
+        console.log('carre');
+      }
+      else{
+        if(full){
+          console.log('full');
+        }
+        else{
+          if(couleur){
+            console.log('couleur');
+          }
+          else{
+            if(quinte){
+              console.log('quinte');
+            }
+            else{
+              if(brelan){
+                console.log('brelan');
+              }
+              else{
+                if(doublePair){
+                  console.log('DP');
+                }
+                else{
+                  if(pair){
+                    console.log('pair');
+                  }
+                  else{
+                    console.log('hauteur');
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 /*-----------------------------CHECK----------------------------------------*/
 function checkHauteur(tab){
 
 }
 function checkPair(tab){
-  var pair = false;
+  pair = false;
   for (var i = tab.length-1; i >= 0; i--) {
-    if(tab[i]>=2){
+    if(tab[i]==2){
       pair = true;
       break;
     }
@@ -143,9 +209,9 @@ function checkPair(tab){
   return pair;
 }
 function checkBrelan(tab){
-  var brelan = false;
+  brelan = false;
   for (var i = tab.length-1; i >= 0; i--) {
-    if(tab[i]>=3){
+    if(tab[i]==3){
       brelan = true;
       break;
     }
@@ -153,39 +219,44 @@ function checkBrelan(tab){
   return brelan;
 }
 function checkQuinte(tab){
+  quinte = false;
   let i = tab.length-1;
   while(i >= 0){
     if((tab[i]==tab[i-1]+1)&&(tab[i-1]==tab[i-2]+1)&&(tab[i-2]==tab[i-3]+1)&&(tab[i-3]==tab[i-4]+1)) {
-      console.log('quinte');
+      quinte = true;
       break;
-    }
-    else{
-      console.log('no quinte');
     }
     i--;
   }
+  return quinte;
 }
 function checkCouleur(tab){
+  couleur = false;
   if (countA == 5 || countB == 5 || countC == 5 || countD == 5) {
-    console.log('couleur');
+    couleur = true;
   }
-  else {
-    console.log('no color');
-  }
+  return couleur;
 }
 function checkCarre(tab){
-
+  carre = false;
+  for (var i = tab.length-1; i >= 0; i--) {
+    if(tab[i]==4){
+      carre = true;
+      break;
+    }
+  }
+  return carre;
 }
 /*---------------------------------------------------------------------*/
 function checkDoublePair(tab){
-
+ // pair * 2 != carré
 }
 function checkFull(tab){
-
+  // brelan + pair ! pas les mêmes
 }
 function checkQuinteFlush(tab){
-
+  // couleur + suite
 }
 function checkQuinteFlushRoyale(tab){
-
+  // couleur + suite + 1-13-12-11-10
 }
