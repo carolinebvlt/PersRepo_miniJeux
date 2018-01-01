@@ -55,25 +55,12 @@ function river(mc){
 /*--------------------------CHECKHAND-------------------------------------------*/
 function checkHand(e){
   var sevenCards = [flop1, flop2, flop3, turn, river, e.card1, e.card2];
-  var cardsValues = [], cardsColors = [];
+  var cardsValues = [], cardsColors = [], countsValues =[], countsColors= [];
   var countA = 0, countB = 0, countC = 0, countD = 0;
-
-  var countsValues =[];
   var count1 = 0, count2 = 0, count3 = 0, count4 = 0, count5 = 0,
       count6 = 0, count7 = 0, count8 = 0, count9 = 0, count10 = 0,
       count11 = 0, count12 = 0, count13 = 0;
   var sortedValues, sortedValuesInt = [];
-
-  var quinteFlushRoyale,
-      quinteFlush,
-      carre,
-      full,
-      couleur,
-      quinte,
-      brelan,
-      doublePair,
-      pair,
-      hauteur;
 
   sevenCards.forEach(function(e){
     let x = e.substr(2,1);
@@ -91,6 +78,10 @@ function checkHand(e){
     if(e == 'd')
         countD++;
   });
+  countsColors.push(countA);
+  countsColors.push(countB);
+  countsColors.push(countC);
+  countsColors.push(countD);
   cardsValues.forEach(function(e){
     if(e == '01')
         count1++;
@@ -119,6 +110,7 @@ function checkHand(e){
     if(e == '13')
         count13++;
   });
+
   countsValues.push(count1);
   countsValues.push(count2);
   countsValues.push(count3);
@@ -131,58 +123,58 @@ function checkHand(e){
   countsValues.push(count10);
   countsValues.push(count11);
   countsValues.push(count12);
-  countsValues.push(count1);
+  countsValues.push(count13);
   sortedValues = cardsValues.sort();
   sortedValues.forEach(function(e){
     sortedValuesInt.push(Number(e));
   });
-  quinteFlushRoyale = checkQuinteFlushRoyale();
-  quinteFlush = checkQuinteFlush();
-  carre = checkCarre();
-  full = checkFull();
-  couleur = checkCouleur();
-  quinte = checkQuinte();
-  brelan = checkBrelan();
-  doublePair = checkDoublePair();
-  pair = checkPair(countsValues);
-  hauteur = checkHauteur();
 
-  if(quinteFlushRoyale){
+  console.log('sevenCards = '+ sevenCards);
+  console.log('cardsValues = '+ cardsValues); // trié 3lignes plus haut
+  console.log('cardsColors = '+ cardsColors);
+  console.log('sortedValues = '+ sortedValues);
+  console.log('sortedValuesInt = '+ sortedValuesInt);
+  console.log('countsValues = '+ countsValues);
+  console.log('countsColors = '+ countsColors);
+  console.log('-------------------------');
+
+  if(checkQuinteFlushRoyale(countsColors, sortedValuesInt)){
     console.log('QFR');
   }
   else{
-    if(quinteFlush){
+    if(checkQuinteFlush(countsColors, sortedValuesInt)){
       console.log('QF');
     }
     else{
-      if(carre){
+      if(checkCarre(countsValues)){
         console.log('carre');
       }
       else{
-        if(full){
+        if(checkFull(countsValues)){
           console.log('full');
         }
         else{
-          if(couleur){
+          if(checkCouleur(countsColors)){
             console.log('couleur');
           }
           else{
-            if(quinte){
+            if(checkQuinte(sortedValuesInt)){
               console.log('quinte');
             }
             else{
-              if(brelan){
+              if(checkBrelan(countsValues)){
                 console.log('brelan');
               }
               else{
-                if(doublePair){
+                if(checkDoublePair(countsValues)){
                   console.log('DP');
                 }
                 else{
-                  if(pair){
+                  if(checkPair(countsValues)){
                     console.log('pair');
                   }
                   else{
+                    checkHauteur(sortedValuesInt)
                     console.log('hauteur');
                   }
                 }
@@ -196,10 +188,11 @@ function checkHand(e){
 }
 /*-----------------------------CHECK----------------------------------------*/
 function checkHauteur(tab){
-
+  var iMax = tab.length-1;
+  return tab[iMax];
 }
 function checkPair(tab){
-  pair = false;
+  var pair = false;
   for (var i = tab.length-1; i >= 0; i--) {
     if(tab[i]==2){
       pair = true;
@@ -209,7 +202,7 @@ function checkPair(tab){
   return pair;
 }
 function checkBrelan(tab){
-  brelan = false;
+  var brelan = false;
   for (var i = tab.length-1; i >= 0; i--) {
     if(tab[i]==3){
       brelan = true;
@@ -219,7 +212,7 @@ function checkBrelan(tab){
   return brelan;
 }
 function checkQuinte(tab){
-  quinte = false;
+  var quinte = false;
   let i = tab.length-1;
   while(i >= 0){
     if((tab[i]==tab[i-1]+1)&&(tab[i-1]==tab[i-2]+1)&&(tab[i-2]==tab[i-3]+1)&&(tab[i-3]==tab[i-4]+1)) {
@@ -231,14 +224,14 @@ function checkQuinte(tab){
   return quinte;
 }
 function checkCouleur(tab){
-  couleur = false;
-  if (countA == 5 || countB == 5 || countC == 5 || countD == 5) {
+  var couleur = false;
+  if (tab[0] == 5 || tab[1] == 5 || tab[2] == 5 || tab[3] == 5) {
     couleur = true;
   }
   return couleur;
 }
 function checkCarre(tab){
-  carre = false;
+  var carre = false;
   for (var i = tab.length-1; i >= 0; i--) {
     if(tab[i]==4){
       carre = true;
@@ -247,16 +240,36 @@ function checkCarre(tab){
   }
   return carre;
 }
+function checkRoyale(tab){
+  if( (tab.indexOf(1)!= -1)&&(tab.indexOf(10)!= -1)&&(tab.indexOf(11)!= -1)&&(tab.indexOf(12)!= -1)&&(tab.indexOf(13)!= -1) ){
+    return true;
+  }
+}
 /*---------------------------------------------------------------------*/
 function checkDoublePair(tab){
- // pair * 2 != carré
+ var pair = 0;
+ for (var i = tab.length-1; i >= 0; i--) {
+   if(tab[i]==2){
+     pair++;
+   }
+ }
+ if(pair == 2){
+   return true;
+ }
 }
 function checkFull(tab){
-  // brelan + pair ! pas les mêmes
+  if(checkBrelan(tab) && checkPair(tab)){
+    return true;
+  }
 }
-function checkQuinteFlush(tab){
-  // couleur + suite
+function checkQuinteFlush(tab1, tab2){
+  if(checkCouleur(tab1) && checkQuinte(tab2)){
+    return true;
+  }
 }
-function checkQuinteFlushRoyale(tab){
-  // couleur + suite + 1-13-12-11-10
+function checkQuinteFlushRoyale(tab1, tab2){
+  if(checkCouleur(tab1) && checkRoyale(tab2)){
+    return true;
+  }
 }
+/*---------------------------------------------------------------------*/
