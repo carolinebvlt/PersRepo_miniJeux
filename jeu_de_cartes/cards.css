@@ -3,76 +3,110 @@ html, body{
   padding: 0;
 }
 .main{
+  background-color: silver;
   width: 100%;
+  height: 98vh;
+  padding-top: 2vh;
 }
 #table{
-  background-color: silver;
-  width: 90%;
-  height: 90vh;
+  background-color: #f7f7f7;
+  width: 70%;
   margin: auto;
-  margin-top: 5vh;
+  border-radius: 100px;
 }
+/*--------------------------------*/
+/*PLAYERS*/
+.players{
+  display: flex;
+  justify-content: space-around;
+}
+.player{
+  width: 450px;
+  height: 350px;
+}
+/*--------------------------------*/
+/*CARDS*/
 #cards{
-  background-color: white;
-  width: 90%;
-  height: 40vh;
-  margin: auto;
-  border: solid black 1px;
-  display: flex;
-  justify-content: space-around;
-}
-.card{
-  width: 220px;
+  width: 1200px;
   height: 300px;
-  background-color: lightblue;
-  border-radius: 5px;
-  margin-top: 40px;
-  border: solid black 1px;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  margin-bottom: -35px;
 }
-
-#player1,
-#player2{
-  background-color: white;
-  width: 45%;
-  height: 40vh;
-  float: left;
-  margin-top: 5vh;
-  border: solid black 1px;
+.persCards{
   display: flex;
   justify-content: space-around;
 }
-#player1{
-  margin-left: 5%;
-}
+.card,
 .persCard{
-  width: 220px;
-  height: 300px;
-  background-color: lightgreen;
-  border-radius: 5px;
+  width: 147px;
+  height: 200px;
   border: solid black 1px;
-  margin-top: 40px;
+  border-radius: 10px;
+  margin-top: 20px;
 }
-#testTable{
-  background-color: blue;
-  width: 700px;
-  height: 400px;
+#playersBottom,
+#playersBottom .persCard{
+  transform: rotate(180deg);
+}
+/*--------------------------------*/
+/*BETS*/
+.bet{
+  width: 90px;
+  height: 90px;
+  border: solid black 1px;
+  border-radius: 50%;
   margin: auto;
-  padding-top: 50px;
+  margin-top: 20px;
 }
-#testCard1,
-#testCard2{
-  float: left;
-  margin-left: 30px;
-}
-#testBtn {
-  width: 100px;
-  height: 50px;
-  background-color: white;
+/*--------------------------------*/
+/*BUTTONS*/
+#btnPlay{
+  background-color: darkgrey;
+  width: 20%;
+  height: 10vh;
+  margin: auto;
+  margin-top: 30px;
+  text-align: center;
+  font-size: 5em;
+  font-weight: bold;
+  line-height:10vh;
+  border: solid black 1px;
   border-radius: 20px;
-  float: left;
-  margin-top: 150px;
-  margin-left: 30px;
+  box-shadow: black 5px 5px 5px;
+  color: blue;
 }
-#testBtn:hover{
+#btns{
+  width: 100%;
+  height: 10vh;
+  margin-top: 30px;
+  display: none;
+}
+.btns div:hover,
+#btnPlay:hover{
   cursor: pointer;
+  color: black;
+  border: solid black 1px;
+  box-shadow: black 2px 2px 2px;
+}
+.btns{
+  width: 90%;
+  height: 10vh;
+  margin-top: 30px;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  line-height: 10vh;
+}
+.btns div{
+  border: solid black 1px;
+  width: 20%;
+  text-align: center;
+  font-size: 4em;
+  font-weight: bold;
+  border: solid black 1px;
+  border-radius: 20px;
+  box-shadow: black 5px 5px 5px;
 }

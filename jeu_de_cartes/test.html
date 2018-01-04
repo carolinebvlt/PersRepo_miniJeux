@@ -5,11 +5,73 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <style>
+    body{
+      background-color: lightblue;
+    }
+    #Alpha, #Beta{
+      width: 220px;
+      height: 300px;
+      background-color: blue;
+      border: solid black 1px;
+    }
+    aside{
+      width: 100px;
+      height: 100px;
+      text-align: center;
+      background-color: red;
+      margin: auto;
+      margin-top: 95px;
+    }
+  </style>
 </head>
 <body>
+  <div>
+    <div id="Alpha">
+      <aside id="AlphaNbr">
+      </aside>
+    </div>
+    <div id="Beta">
+      <aside id="BetaNbr">
+      </aside>
+    </div>
+  </div>
 <script type="text/javascript">
 
+var alpha = '01c';
+var beta = '11a';
+var Alpha = document.getElementById('Alpha');
+var AlphaNbr = document.getElementById('AlphaNbr');
+var Beta = document.getElementById('Beta');
+var BetaNbr = document.getElementById('BetaNbr');
+var tab1 = [alpha, beta];
+var tab2 = [Alpha, Beta];
+var tab3 = [AlphaNbr, BetaNbr];
+setCardsView(tab1,tab2, tab3);
 
+function setCardsView(tab1, tab2, tab3){
+  for (var i = 0; i < tab1.length; i++) {
+    console.log('tab1 = '+tab1[i]+ ' tab2 = '+tab2[i] + ' tab3 = '+tab3[i]);
+    let x = tab1[i].substr(2,1);
+    switch (x) {
+      case 'a': tab2[i].style.backgroundImage = "url('img/cards/carreau.png')"; break;
+      case 'b': tab2[i].style.backgroundImage = "url('img/cards/coeur.png')"; break;
+      case 'c': tab2[i].style.backgroundImage = "url('img/cards/pique.png')"; break;
+      case 'd': tab2[i].style.backgroundImage = "url('img/cards/trefle.png')"; break;
+    }
+    let z = tab1[i].substr(0,2); // => '01',.. ou '13'
+    tab3[i].innerHTML = z;
+  }
+    // let x = e.substr(2,1); // => 'a', 'b', 'c' ou 'd'
+    // switch (x) {
+    //   case 'a': e.style.backgroundImage = "url('img/cards/carreau.png')"; break;
+    //   case 'b': e.style.backgroundImage = "url('img/cards/coeur.png')"; break;
+    //   case 'c': e.style.backgroundImage = "url('img/cards/pique.png')"; break;
+    //   case 'd': e.style.backgroundImage = "url('img/cards/trefle.png')"; break;
+    // }
+    // let z = e.substr(0,2); // => '01',.. ou '13'
+
+}
   // function test(){
   //   var a = 1;
   //   if(a==1){

@@ -10,28 +10,123 @@
 <body>
   <div class="main">
     <section id="table">
+      <div id="playersTop" class="players">
+        <div id="player1" class="player">
+          <div class="persCards">
+            <div id="pers1Card1" class="persCard">
+              <aside id="pers1Card1Nbr">
+              </aside>
+            </div>
+            <div id="pers1Card2" class="persCard">
+              <aside id="pers1Card2Nbr">
+              </aside>
+            </div>
+          </div>
+          <aside id="bet1" class="bet">
+          </aside>
+        </div>
+        <div id="player2" class="player">
+          <div class="persCards">
+            <div id="pers2Card1" class="persCard">
+              <aside id="pers2Card1Nbr">
+              </aside>
+            </div>
+            <div id="pers2Card2" class="persCard">
+              <aside id="pers2Card2Nbr">
+              </aside>
+            </div>
+          </div>
+          <aside id="bet2" class="bet">
+          </aside>
+        </div>
+        <div id="player3" class="player">
+          <div class="persCards">
+            <div id="pers3Card1" class="persCard">
+              <aside id="pers3Card1Nbr">
+              </aside>
+            </div>
+            <div id="pers3Card2" class="persCard">
+              <aside id="pers3Card2Nbr">
+              </aside>
+            </div>
+          </div>
+          <aside id="bet3" class="bet">
+          </aside>
+        </div>
+      </div>
       <div id="cards">
-        <div id="card1" class="card"></div>
-        <div id="card2" class="card"></div>
-        <div id="card3" class="card"></div>
-        <div id="card4" class="card"></div>
-        <div id="card5" class="card"></div>
+        <div id="Flop1" class="card">
+          <aside id="Flop1Nbr">
+          </aside>
+        </div>
+        <div id="Flop2" class="card">
+          <aside id="Flop2Nbr">
+          </aside>
+        </div>
+        <div id="Flop3" class="card">
+          <aside id="Flop3Nbr">
+          </aside>
+        </div>
+        <div id="Turn" class="card">
+          <aside id="TurnNbr">
+          </aside>
+        </div>
+        <div id="River" class="card">
+          <aside id="RiverNbr">
+          </aside>
+        </div>
       </div>
-      <div id="player1">
-        <div id="persCard1-1" class="persCard"></div>
-        <div id="persCard1-2" class="persCard"></div>
-      </div>
-      <div id="player2">
-        <div id="persCard2-1" class="persCard"></div>
-        <div id="persCard2-2" class="persCard"></div>
+      <div id="playersBottom" class="players">
+        <div id="player4" class="player">
+          <div class="persCards">
+            <div id="pers4Card1" class="persCard">
+              <aside id="pers4Card1Nbr">
+              </aside>
+            </div>
+            <div id="pers4Card2" class="persCard">
+              <aside id="pers4Card2Nbr">
+              </aside>
+            </div>
+          </div>
+          <aside id="bet4" class="bet">
+          </aside>
+        </div>
+        <div id="player5" class="player">
+          <div class="persCards">
+            <div id="pers5Card1" class="persCard">
+              <aside id="pers5Card1Nbr">
+              </aside>
+            </div>
+            <div id="pers5Card2" class="persCard">
+              <aside id="pers5Card2Nbr">
+              </aside>
+            </div>
+          </div>
+          <aside id="bet5" class="bet">
+          </aside>
+        </div>
+        <div id="player6" class="player">
+          <div class="persCards">
+            <div id="pers6Card1" class="persCard">
+              <aside id="pers6Card1Nbr">
+              </aside>
+            </div>
+            <div id="pers6Card2" class="persCard">
+              <aside id="pers6Card2Nbr">
+              </aside>
+            </div>
+          </div>
+          <aside id="bet6" class="bet">
+          </aside>
+        </div>
       </div>
     </section>
-    <div id="testTable">
-      <div id="testCard1" class="card">
-      </div>
-      <div id="testCard2" class="card">
-      </div>
-      <div id="testBtn" onclick="play()">
+    <div id="btnPlay" onclick="play()">PLAY</div>
+    <div id="btns">
+      <div class="btns">
+        <div id="btnFold" onclick="fold()">FOLD</div>
+        <div id="btnCall" onclick="call()">CALL</div>
+        <div id="btnRaise" onclick="raise()">RAISE</div>
       </div>
     </div>
   </div>
