@@ -106,7 +106,7 @@ function river(mc){
   river = mc[19];
 }
 
-/*-------------------------------CARDSVIEW-----------------------------------*/
+/*-------------------------------CARDSVIEW(AM FOR...IN)-----------------------------------*/
 function setCardsView(tab1, tab2, tab3){ // ["01c"], [divById], [asideById]
   for (var i = 0; i < tab1.length; i++) {
     console.log('tab1 = '+tab1[i]+ ' tab2 = '+tab2[i] + ' tab3 = '+tab3[i]);
